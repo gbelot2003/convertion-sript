@@ -19,9 +19,20 @@ def window1_destroy(self, data=None):
     Gtk.main_quit()
 
 def button_convert(self, data=None):
+    try:
+        val = float(txtFrecuencia.get_text())
+        txtFrecuencia.set_text(str(val))
+    except ValueError:
+        txtFrecuencia.set_text('Solo Numeros')
+        lblBandaC.set_text('')
+        lblBandaL.set_text('')
+        lblBandaIF.set_text('')
+        pass
+
     if txtFrecuencia.get_text() == False:
         pass
     elif rbBandaC.get_active():
+
         bandaC = txtFrecuencia.get_text()
         bandaC = float(bandaC)
         bandaC = round(bandaC, 2)
